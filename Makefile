@@ -2,12 +2,10 @@
 
 dotfiles = .ackrc \
 				.asdfrc \
-				.finicky.js \
 				.fzf.zsh \
 				.gitconfig \
 				.hyper.js \
 				.prettierrc \
-				.prompt.sh \
 				.tmux \
 				.tmux.conf \
 				.tool-versions \
@@ -40,7 +38,7 @@ vim: echo.vim
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 languages: echo.languages
-	asdf install
+	bin/languages
 
 other: echo.other
 	defaults write com.apple.screencapture location ~/Downloads;killall SystemUIServer ;\

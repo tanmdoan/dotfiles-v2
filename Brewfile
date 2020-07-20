@@ -7,15 +7,17 @@ brew "asdf"
 brew "autojump"
 brew "bat"
 brew "brew-cask-completion"
+brew "coreutils"
 brew "eslint"
 brew "exercism"
 brew "fzf"
 brew "git"
 brew "gh"
+brew "gpg"
 brew "navi"
 brew "neovim"
 brew "openssl"
-brew "postgresql"
+# brew "postgresql"
 brew "prettier"
 brew "reattach-to-user-namespace"
 brew "redis"
@@ -28,6 +30,6 @@ cask "1password-cli"
 cask "github"
 cask "hyper"
 
-mas "1Password 7", id: 1333542190
-mas "Slack", id: 803453959
-mas "Xcode", id: 497799835
+# mas "1Password 7", id: 1333542190
+# mas "Slack", id: 803453959
+# mas "Xcode", id: 497799835

@@ -8,7 +8,6 @@
   plugins=(autojump docker jsontools osx tmux)
 
   source $ZSH/oh-my-zsh.sh
-  if [ "$TMUX" = "" ]; then tmux; fi
 
   fancy-ctrl-z () {
     if [[ $#BUFFER -eq 0 ]]; then
@@ -22,7 +21,7 @@
   zle -N fancy-ctrl-z
   bindkey '^Z' fancy-ctrl-z
 
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # interactive cheatsheet
   source <(navi widget zsh)

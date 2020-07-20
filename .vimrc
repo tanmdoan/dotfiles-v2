@@ -1,4 +1,21 @@
-set nocompatible
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+endif
+
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+
+let g:vim_bootstrap_langs = "javascript,php,python,ruby"
+let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+
+if !filereadable(vimplug_exists)
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  let g:not_finish_vimplug = "yes"
+
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Set leader
@@ -46,7 +63,8 @@ set number                       " line numbers
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
 " color scheme
-  Plug 'dracula/vim'
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  colorscheme dracula
 
 " mapping the jumping between splits. Hold control while using vim nav.
   nmap <C-J> <C-W>j
@@ -81,7 +99,7 @@ set number                       " line numbers
         exe substitute(mapcheck("R"), "<CR>", "", "")
         wincmd p
       endif
-    endif
+  k endif
   endfunction
   map <Leader>r :call Refresh()<cr>
 
@@ -91,23 +109,6 @@ set number                       " line numbers
   Plug 'othree/yajs'
     au BufNewFile,BufRead *.json set ai filetype=javascript
   Plug 'leafgarland/typescript-vim'
-
-" linting, auto-formatting
-  Plug 'dense-analysis/ale'
-  let g:ale_fixers = {
-    \ '*': ['remove_trailing_lines','trim_whitespace'],
-    \ 'elixir': ['mix_format'],
-    \ 'javascript': ['prettier'],
-    \ 'typescript': ['prettier'],
-    \ }
-  let g:ale_fix_on_save = 0
-  let g:ale_completion_tsserver_autoimport = 1
-  let g:ale_sign_error = '✘'
-  let g:ale_sign_warning = '⚠'
-  let g:airline#extensions#ale#enabled = 1
-  highlight ALEErrorSign ctermbg=NONE ctermfg=red
-  highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-  nmap <Leader>x :ALEFix<CR>
 
 " Completion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -138,7 +139,7 @@ set number                       " line numbers
   Plug 'scrooloose/nerdtree'
     let NERDTreeHijackNetrw = 0
     let NERDTreeShowHidden=1
-    nmap <Leader>w :NERDTreeToggle<CR>
+    nmap <Leader>n :NERDTreeToggle<CR>
 
 " Markdown preview
   Plug 'JamshedVesuna/vim-markdown-preview'
@@ -153,10 +154,3 @@ set number                       " line numbers
     \'cwin'    : '#I #W #F',
     \ }
   let g:tmuxline_powerline_separators = 0
-
-" Status line
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme='one'
-  let g:airline_extensions = ['ctrlp', 'tmuxline', 'ale']
-  let g:airline_detect_spell=1
