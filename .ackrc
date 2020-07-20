@@ -1,0 +1,5 @@
+--ignore-dir=.git/
+--ignore-dir=node_modules/
+--ignore-dir=_build/
+
+less -r
