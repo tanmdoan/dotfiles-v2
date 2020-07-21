@@ -53,7 +53,6 @@
 
     mv "${download_dir}${last_download}" "${destination_file}"
   }
-  alias tf='terraform'
 
 # version management
   source /usr/local/opt/asdf/asdf.sh
