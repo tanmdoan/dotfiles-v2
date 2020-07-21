@@ -3,28 +3,7 @@
   HYPHEN_INSENSITIVE=true
   COMPLETION_WAITING_DOTS=true
 
-# plugins
-  fpath=(/usr/local/share/zsh-completions $fpath)
-  plugins=(autojump docker jsontools osx tmux)
-
   source $ZSH/oh-my-zsh.sh
-
-  fancy-ctrl-z () {
-    if [[ $#BUFFER -eq 0 ]]; then
-      BUFFER="fg"
-      zle accept-line
-    else
-      zle push-input
-      zle clear-screen
-    fi
-  }
-  zle -N fancy-ctrl-z
-  bindkey '^Z' fancy-ctrl-z
-
-#  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# interactive cheatsheet
-  source <(navi widget zsh)
 
 # terminal color settings
   CLICOLOR=1
