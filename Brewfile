@@ -18,7 +18,6 @@ brew "navi"
 brew "neovim"
 brew "openssl"
 # brew "postgresql"
-brew "prettier"
 brew "reattach-to-user-namespace"
 brew "redis"
 brew "tmux"
@@ -28,7 +27,6 @@ brew "zsh-completions"
 
 cask "1password-cli"
 cask "github"
-cask "hyper"
 
 # mas "1Password 7", id: 1333542190
 # mas "Slack", id: 803453959

@@ -1,5 +1,10 @@
 call plug#begin()
   Plug 'dracula/vim'
+  Plug 'kien/ctrlp.vim'
+  Plug 'mileszs/ack.vim'
+  Plug 'scrooloose/nerdtree'
+  Plug 'JamshedVesuna/vim-markdown-preview'
+  Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 if (has("termguicolors"))
@@ -22,7 +27,6 @@ set incsearch                    " show the first match as search strings are ty
 set hlsearch                     " highlight the search matches
 set ignorecase smartcase         " searching is case insensitive when all lowercase
 set gdefault                     " assume the /g flag on substitutions to replace all matches in a line
-set directory=/tmp/              " set temporary directory (don't litter local dir with swp/tmp files)
 set autoread                     " pick up external file modifications
 set hidden                       " don't abandon buffers when unloading
 set autoindent                   " match indentation of previous line
@@ -34,6 +38,26 @@ set clipboard^=unnamed           " Use system clipboard
 set shell=zsh                    " Use login shell for commands
 set encoding=utf-8               " utf encoding
 set number                       " line numbers
+set nobackup 	 		 " no backups
+set nowritebackup 	 	 " no backups
+set noswapfile     	 	 " no swap file
+
+" match tabs/spaces
+  set smarttab
+  set smartindent
+  set expandtab tabstop=2 softtabstop=2 shiftwidth=2
+
+" flip the default split directions to sane ones
+  set splitright
+  set splitbelow
+
+"folding settings
+  set foldmethod=indent   "fold based on indent
+  set foldnestmax=10      "deepest fold is 10 levels
+  set nofoldenable        "dont fold by default
+
+" remember last position in file
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
 " mapping the jumping between splits. Hold control while using vim nav.
   nmap <C-J> <C-W>j
@@ -54,3 +78,62 @@ set number                       " line numbers
   nnoremap <Leader>q :q<CR>
   nnoremap <Leader>x :x<CR>
   nnoremap <Leader>Q :q!<CR>
+
+" buffer resizing mappings
+  nnoremap <S-H> :vertical resize -10<cr>
+  nnoremap <S-L> :vertical resize +10<cr>
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+  nnoremap Y y$
+
+" ctrlp
+ if get(g:, 'loaded_ctrlp', 1)
+   let g:ctrlp_match_window_reversed = 0
+   " let g:ctrlp_working_path_mode = 'a'
+   let g:ctrlp_max_height = 20
+   let g:ctrlp_match_window_bottom = 0
+   let g:ctrlp_switch_buffer = 0
+   let g:ctrlp_custom_ignore = '\v(\.DS_Store|\.sass-cache|\.scssc|tmp|\.bundle|\.git|node_modules|vendor|bower_components|deps|_build)$'
+   let g:ctrlp_working_path_mode = 'w'
+   if executable('ag')
+      let g:ctrlp_user_command = 'ag %s
+             \ -l
+             \ --nocolor
+             \ --ignore .git
+             \ --ignore .svn
+             \ --ignore "*.class"
+             \ --ignore "*.o"
+             \ --ignore "*.obj"
+             \ --ignore "*.rbc"
+             \ --ignore features/cassettes
+             \ --ignore spec/cassettes
+             \ --ignore tmp/cache
+             \ --ignore vendor/gems
+             \ --ignore vendor/ruby
+             \ -g ""'
+   endif
+ endif
+
+" Ack
+  nnoremap <leader><bs> :Ack! '\b<c-r><c-w>\b'<cr>
+  nnoremap <leader>a :Ack<space>
+
+" NERDTree configuration
+  let NERDTreeIgnore=['\~$', 'tmp', '\.git', '\.bundle', '.DS_Store', 'tags', '.swp']
+  let NERDTreeShowHidden=1
+  let g:NERDTreeDirArrows=0
+  let g:NERDTreeNodeDelimiter = "\u00a0"
+  map <Leader>n :NERDTreeToggle<CR>
+  map <Leader>fnt :NERDTreeFind<CR>
+
+" Markdown preview
+  let vim_markdown_preview_toggle=1
+  let vim_markdown_preview_hotkey='<C-m>'
+  let vim_markdown_preview_github=1
+
+" Tmux status bar
+  let g:tmuxline_preset = {
+    \'win'    : '#I #W',
+    \'cwin'    : '#I #W #F',
+    \ }
+  let g:tmuxline_powerline_separators = 0
