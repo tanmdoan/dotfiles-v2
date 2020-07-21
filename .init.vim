@@ -1,22 +1,12 @@
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+call plug#begin()
+  Plug 'dracula/vim'
+call plug#end()
+
+if (has("termguicolors"))
+ set termguicolors
 endif
-
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
-
-let g:vim_bootstrap_langs = "javascript,php,python,ruby"
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
-
-if !filereadable(vimplug_exists)
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  let g:not_finish_vimplug = "yes"
-
-  autocmd VimEnter * PlugInstall
-endif
-
-call plug#begin('~/.vim/plugged')
+syntax enable
+colorscheme dracula
 
 " Set leader
   let mapleader=","
@@ -45,27 +35,6 @@ set shell=zsh                    " Use login shell for commands
 set encoding=utf-8               " utf encoding
 set number                       " line numbers
 
-" match tabs/spaces
-  set smarttab
-  set smartindent
-  set expandtab tabstop=2 softtabstop=2 shiftwidth=2
-
-" flip the default split directions to sane ones
-  set splitright
-  set splitbelow
-
-"folding settings
-  set foldmethod=indent   "fold based on indent
-  set foldnestmax=10      "deepest fold is 10 levels
-  set nofoldenable        "dont fold by default
-
-" remember last position in file
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-
-" color scheme
-  Plug 'dracula/vim', { 'as': 'dracula' }
-  colorscheme dracula
-
 " mapping the jumping between splits. Hold control while using vim nav.
   nmap <C-J> <C-W>j
   nmap <C-K> <C-W>k
@@ -85,67 +54,3 @@ set number                       " line numbers
   nnoremap <Leader>q :q<CR>
   nnoremap <Leader>x :x<CR>
   nnoremap <Leader>Q :q!<CR>
-
-" buffer resizing mappings
-  nnoremap <S-H> :vertical resize -10<cr>
-  nnoremap <S-L> :vertical resize +10<cr>
-
-" buffer movement and closing
-  nnoremap <Tab> :bnext<CR>
-  nnoremap <S-Tab> :bprevious<CR>
-  cnoreabbrev x w<bar>bd
-
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-  nnoremap Y y$
-
-" Universal comment plugin
-  Plug 'tomtom/tcomment_vim'
-
-  Plug 'othree/yajs'
-    au BufNewFile,BufRead *.json set ai filetype=javascript
-  Plug 'leafgarland/typescript-vim'
-
-" Completion
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-
-" ctrlp
-  Plug 'kien/ctrlp.vim'
-  nnoremap <leader>b :CtrlPBuffer<CR>
-  let g:ctrlp_working_path_mode = '' " enables search of entire filesystem
-  let g:ctrlp_max_files = 0
-  let g:ctrlp_follow_symlinks=1
-  let g:ctrlp_max_depth = 40
-  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-  let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/](\.git|node_modules|_build|site-packages|deps|__pycache__)$',
-    \ 'file': '\v\.(pyc|beam|log)$',
-    \ }
-
-" Ack
-  Plug 'mileszs/ack.vim'
-  nnoremap <leader><bs> :Ack! '\b<c-r><c-w>\b'<cr>
-  nnoremap <leader>a :Ack
-
-" Aligning text
-  Plug 'godlygeek/tabular'
-
-" Project drawer
-  Plug 'scrooloose/nerdtree'
-    let NERDTreeHijackNetrw = 0
-    let NERDTreeShowHidden=1
-    nmap <Leader>n :NERDTreeToggle<CR>
-
-" Markdown preview
-  Plug 'JamshedVesuna/vim-markdown-preview'
-  let vim_markdown_preview_toggle=1
-  let vim_markdown_preview_hotkey='<C-m>'
-  let vim_markdown_preview_github=1
-
-" Tmux status bar
-  Plug 'edkolev/tmuxline.vim'
-  let g:tmuxline_preset = {
-    \'win'    : '#I #W',
-    \'cwin'    : '#I #W #F',
-    \ }
-  let g:tmuxline_powerline_separators = 0

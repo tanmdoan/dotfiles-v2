@@ -39,7 +39,7 @@
   alias ll="ls -la"
   alias g='git'
   alias mkcd='mkdir $1 && cd $1'
-  alias vi='nvim'
+  alias vi=nvim
   function mkcd {
      mkdir -p "$1" && cd "$1"
   }

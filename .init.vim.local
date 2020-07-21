@@ -2,7 +2,7 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+let vimplug_exists=expand('~/.local/share/nvm/site/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "javascript,php,python,ruby"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
@@ -10,13 +10,14 @@ let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 if !filereadable(vimplug_exists)
   echo "Installing Vim-Plug..."
   echo ""
-  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !\sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/site/plugged')
 
 " Set leader
   let mapleader=","
@@ -72,6 +73,20 @@ set number                       " line numbers
   nmap <C-H> <C-W>h
   nmap <C-L> <C-W>l
 
+" vim tab navigation
+  nnoremap th :tabfirst<CR>
+  nnoremap tj :tabprev<CR>
+  nnoremap tk :tabnext<CR>
+  nnoremap tl :tablast<CR>
+  nnoremap tc :tabclose<CR>
+  nnoremap tn :tabnew<CR>
+
+" Quick write, quit, write + quit, quit all
+  nnoremap <Leader>w :w<CR>
+  nnoremap <Leader>q :q<CR>
+  nnoremap <Leader>x :x<CR>
+  nnoremap <Leader>Q :q!<CR>
+
 " buffer resizing mappings
   nnoremap <S-H> :vertical resize -10<cr>
   nnoremap <S-L> :vertical resize +10<cr>
@@ -83,25 +98,6 @@ set number                       " line numbers
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
-
-" refresh ctrlp and nerdtree
-  function Refresh()
-    echo "refreshing files..."
-
-    if exists(":CtrlPClearAllCaches") == 2
-      CtrlPClearAllCaches
-    endif
-
-    if exists("t:NERDTreeBufName")
-      let nr = bufwinnr(t:NERDTreeBufName)
-      if nr != -1
-        exe nr . "wincmd w"
-        exe substitute(mapcheck("R"), "<CR>", "", "")
-        wincmd p
-      endif
-  k endif
-  endfunction
-  map <Leader>r :call Refresh()<cr>
 
 " Universal comment plugin
   Plug 'tomtom/tcomment_vim'
@@ -129,8 +125,8 @@ set number                       " line numbers
 
 " Ack
   Plug 'mileszs/ack.vim'
-    nmap g/ :Ack<space>
-    nmap g* :Ack -w <C-R><C-W><space>
+  nnoremap <leader><bs> :Ack! '\b<c-r><c-w>\b'<cr>
+  nnoremap <leader>a :Ack
 
 " Aligning text
   Plug 'godlygeek/tabular'
@@ -154,3 +150,5 @@ set number                       " line numbers
     \'cwin'    : '#I #W #F',
     \ }
   let g:tmuxline_powerline_separators = 0
+  
+plug#end()

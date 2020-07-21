@@ -7,6 +7,7 @@
 	ci = commit
 	co = checkout
 	cp = cherry-pick
+	nap = add -N --ignore-removal . && gap && gref
 	put = push origin HEAD
 	find = !sh -c 'git ls-files | grep --color=always -i "$@" | less -FRSX' -
 	fixup = commit --fixup

@@ -9,7 +9,6 @@ dotfiles = .ackrc \
 				.tmux \
 				.tmux.conf \
 				.tool-versions \
-				.vimrc \
 				.zshrc
 
 install: symlink packages shell vim languages other
@@ -35,6 +34,8 @@ vim: echo.vim
 	mkdir -p ~/.config/nvim ;\
 	rm -rf ~/.config/nvim/init.vim ;\
 	ln -s $(shell pwd)/.init.vim ~/.config/nvim/init.vim ;\
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	nvim +PlugInstall
 
 languages: echo.languages
 	bin/languages
