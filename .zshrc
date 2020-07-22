@@ -11,6 +11,8 @@
     source $ZSH/oh-my-zsh.sh
   fi
 
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # terminal color settings
   CLICOLOR=1
   export TERM=xterm-256color
