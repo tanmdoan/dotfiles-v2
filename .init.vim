@@ -5,6 +5,7 @@ call plug#begin()
   Plug 'scrooloose/nerdtree'
   Plug 'JamshedVesuna/vim-markdown-preview'
   Plug 'edkolev/tmuxline.vim'
+  Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 if (has("termguicolors"))
@@ -125,6 +126,8 @@ set noswapfile     	 	 " no swap file
   let g:NERDTreeNodeDelimiter = "\u00a0"
   map <Leader>n :NERDTreeToggle<CR>
   map <Leader>fnt :NERDTreeFind<CR>
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Automaticaly 
+    " close nvim if NERDTree is only thing left open
 
 " Markdown preview
   let vim_markdown_preview_toggle=1
