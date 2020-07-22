@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if ! [[ -d $HOME/.oh-my-zsh ]]; then
+  sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+  
+if [[ $SHELL != '/bin/zsh' ]]; then
+  chsh -s /bin/zsh
+fi

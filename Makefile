@@ -8,24 +8,24 @@ dotfiles = .ackrc \
 				.tool-versions \
 				.zshrc
 
-install: symlink packages shell vim languages other
+install: shell symlink packages vim languages other
 
 cyan = "\\033[1\;96m"
 off  = "\\033[0m"
 echo.%:
 	@echo "\n$(cyan)Building $*$(off)"
 
+packages: echo.packages
+	brew bundle
+
+shell: echo.shell
+	bin/shell
+
 symlink: echo.symlink
 	@for file in $(dotfiles); do \
 		rm -rf ~/$$file ;\
 		ln -s $(shell pwd)/$$file ~/$$file ;\
 	done
-
-packages: echo.packages
-	brew bundle
-
-shell: echo.shell
-	chsh -s /bin/zsh
 
 vim: echo.vim
 	mkdir -p ~/.config/nvim ;\
