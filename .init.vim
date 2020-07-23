@@ -9,11 +9,21 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-endwise'
+  Plug 'vim-ruby/vim-ruby'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'christoomey/vim-tmux-runner'
   Plug 'milkypostman/vim-togglelist'
   Plug 'scrooloose/nerdtree'
   Plug 'gabebw/vim-spec-runner'
+  Plug 'mxw/vim-jsx'
+  Plug 'godlygeek/tabular'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
+
 
 call plug#end()
 
@@ -43,7 +53,6 @@ set autoindent                   " match indentation of previous line
 set laststatus=2                 " show status line
 set display=lastline             " When lines are cropped at the screen bottom, show as much as possible
 set backspace=indent,eol,start   " make backspace work in insert mode
-set wildmode=list:longest,full   " use tab-complete to see a list of possiblities when entering commands
 set clipboard^=unnamed           " Use system clipboard
 set shell=zsh                    " Use login shell for commands
 set encoding=utf-8               " utf encoding
@@ -165,3 +174,17 @@ set noswapfile     	 	 " no swap file
   map <leader>T <plug>RunFocusedSpec
   map <leader>tl <plug>RunMostRecentSpec
 
+" use <tab> for trigger completion and navigate to the next complete item
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+
+  inoremap <silent><expr> <Tab>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+
+" use <C-j/k> to nav completion list
+  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
