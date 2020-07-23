@@ -6,6 +6,15 @@ call plug#begin()
   Plug 'JamshedVesuna/vim-markdown-preview'
   Plug 'edkolev/tmuxline.vim'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-surround'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'christoomey/vim-tmux-runner'
+  Plug 'milkypostman/vim-togglelist'
+  Plug 'scrooloose/nerdtree'
+  Plug 'gabebw/vim-spec-runner'
+
 call plug#end()
 
 if (has("termguicolors"))
@@ -140,3 +149,19 @@ set noswapfile     	 	 " no swap file
     \'cwin'    : '#I #W #F',
     \ }
   let g:tmuxline_powerline_separators = 0
+
+" toggle quickfix with <Leader> c
+  let g:toggle_list_no_mappings=1
+  nmap <script> <silent> <Leader>c :call ToggleQuickfixList()<CR>
+
+" Run specs quickly with tmux
+  let g:VtrClearSequence = "^C^Mclear^M"
+  nmap <leader>h :VtrOpenRunner({'orientation': 'h', 'percentage': 33})<CR>
+  nmap <leader>v :VtrOpenRunner({'orientation': 'v', 'percentage': 20})<CR>
+  nmap <leader>k :VtrKillRunner<CR>
+  let g:spec_runner_dispatcher = 'call VtrSendCommand("bundle exec {command}")'
+  let g:disable_write_on_spec_run = 1
+  map <leader>t <plug>RunCurrentSpecFile
+  map <leader>T <plug>RunFocusedSpec
+  map <leader>tl <plug>RunMostRecentSpec
+
