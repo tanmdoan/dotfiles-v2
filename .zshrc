@@ -32,7 +32,7 @@
 
 # git aliases
   alias gap='git add -p'
-  alias gnap='git add -N --ignore-removal . && gap && gref'
+  alias gnap='git add -N --ignore-removal . && gap'
   alias glp='git log -p'
   alias glg='git log --graph --oneline --decorate --color --all'
   alias gb='git branch'
