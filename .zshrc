@@ -15,8 +15,8 @@
 
 # terminal color settings
   CLICOLOR=1
-  export TERM=xterm-256color
   export EDITOR="nvim"
+  [[ $TMUX != "" ]] && export TERM="screen-256color"
 
 # shell aliases
   alias cat='bat'

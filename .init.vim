@@ -23,8 +23,6 @@ call plug#begin()
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
-
-
 call plug#end()
 
 if (has("termguicolors"))
@@ -57,9 +55,9 @@ set clipboard^=unnamed           " Use system clipboard
 set shell=zsh                    " Use login shell for commands
 set encoding=utf-8               " utf encoding
 set number                       " line numbers
-set nobackup 	 		 " no backups
-set nowritebackup 	 	 " no backups
-set noswapfile     	 	 " no swap file
+set nobackup 	 		               " no backups
+set nowritebackup 	 	           " no backups
+set noswapfile     	 	           " no swap file
 
 " match tabs/spaces
   set smarttab
@@ -104,6 +102,9 @@ set noswapfile     	 	 " no swap file
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
+
+" Unhighlight search results
+  map <Leader><space> :nohl<cr>
 
 " ctrlp
  if get(g:, 'loaded_ctrlp', 1)
