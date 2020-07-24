@@ -199,3 +199,8 @@ endfunction
 " use <C-j/k> to nav completion list
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+if filereadable(expand('~/.init.vim.local'))
+  source ~/.init.vim
+endif

@@ -92,3 +92,8 @@
   export ARCHFLAGS='-arch x86_64'
   export CC=gcc
   alias be='bundle exec'
+
+  # import local zsh customizations, if present
+zrcl="$HOME/.zshrc.local"
+[[ ! -a $zrcl ]] || source $zrcl
+
