@@ -31,7 +31,7 @@ custom file.
 
 For example:
 
-`.zshrc.local` will be sourced by `zhsrc`
+`.zshrc.local` will be sourced by `zhsrc` \
 `.tmux.conf.local` will be sourced by `.tmux.conf`
 
 The entry point is the `Makefile` and custom tools can be included via homebrew in
@@ -40,5 +40,6 @@ the `Brewfile`
 ### Things to come
 
 - uninstall script
+- improve the PlugInstall step to automatically install/update plugins on nvim open
 
 Inspiration came from ## athal7's dotfiles
