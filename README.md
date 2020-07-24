@@ -4,7 +4,7 @@ Simple environment for working as web developer
 
 ### What's included
 
-The environment created here helps with working with these tools/langues:
+This environment helps with working with these tools/languages:
 
 - zsh/oh-my-zsh
 - git
