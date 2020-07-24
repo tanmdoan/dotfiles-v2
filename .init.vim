@@ -202,5 +202,5 @@ endfunction
 
 
 if filereadable(expand('~/.init.vim.local'))
-  source ~/.init.vim
+  source ~/.init.vim.local
 endif
