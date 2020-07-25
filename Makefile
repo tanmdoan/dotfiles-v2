@@ -8,18 +8,18 @@ dotfiles = .ackrc \
 				.tool-versions \
 				.zshrc
 
-install: shell symlink packages vim languages other
+install: packages shell symlink vim languages other
 
 cyan = "\\033[1\;96m"
 off  = "\\033[0m"
 echo.%:
 	@echo "\n$(cyan)Building $*$(off)"
 
-packages: echo.packages
-	brew bundle
-
 shell: echo.shell
 	bin/shell
+
+packages: echo.packages
+	brew bundle
 
 symlink: echo.symlink
 	@for file in $(dotfiles); do \
@@ -31,8 +31,6 @@ vim: echo.vim
 	mkdir -p ~/.config/nvim ;\
 	rm -rf ~/.config/nvim/init.vim ;\
 	ln -s $(shell pwd)/.init.vim ~/.config/nvim/init.vim ;\
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim +PlugInstall
 
 languages: echo.languages
 	bin/languages

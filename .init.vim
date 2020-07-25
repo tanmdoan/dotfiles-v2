@@ -1,3 +1,18 @@
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+
+let g:vim_bootstrap_langs = "javascript,ruby"
+let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+
+if !filereadable(vimplug_exists)
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  let g:not_finish_vimplug = "yes"
+
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin()
   Plug 'dracula/vim'
   Plug 'kien/ctrlp.vim'
