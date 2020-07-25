@@ -1,50 +1,53 @@
-let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
+" Installs vim.plug and plugins on first open
+  let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "javascript,ruby"
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+  let g:vim_bootstrap_langs = "javascript,ruby"
+  let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
-if !filereadable(vimplug_exists)
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  if !filereadable(vimplug_exists)
+    echo "Installing Vim-Plug..."
+    echo ""
+    silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  let g:not_finish_vimplug = "yes"
+    let g:not_finish_vimplug = "yes"
 
-  autocmd VimEnter * PlugInstall
-endif
+    autocmd VimEnter * PlugInstall
+  endif
 
-call plug#begin()
-  Plug 'dracula/vim'
-  Plug 'kien/ctrlp.vim'
-  Plug 'mileszs/ack.vim'
-  Plug 'scrooloose/nerdtree'
-  Plug 'JamshedVesuna/vim-markdown-preview'
-  Plug 'edkolev/tmuxline.vim'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-endwise'
-  Plug 'vim-ruby/vim-ruby'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'christoomey/vim-tmux-runner'
-  Plug 'milkypostman/vim-togglelist'
-  Plug 'scrooloose/nerdtree'
-  Plug 'gabebw/vim-spec-runner'
-  Plug 'mxw/vim-jsx'
-  Plug 'godlygeek/tabular'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
-call plug#end()
+" Plugins
+  call plug#begin()
+    Plug 'dracula/vim'
+    Plug 'kien/ctrlp.vim'
+    Plug 'mileszs/ack.vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'JamshedVesuna/vim-markdown-preview'
+    Plug 'edkolev/tmuxline.vim'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-rails'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-endwise'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'christoomey/vim-tmux-runner'
+    Plug 'milkypostman/vim-togglelist'
+    Plug 'scrooloose/nerdtree'
+    Plug 'gabebw/vim-spec-runner'
+    Plug 'mxw/vim-jsx'
+    Plug 'godlygeek/tabular'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
+  call plug#end()
 
-if (has("termguicolors"))
- set termguicolors
-endif
-syntax enable
-colorscheme dracula
+" Theme
+  if (has("termguicolors"))
+   set termguicolors
+  endif
+  syntax enable
+  colorscheme dracula
 
 " Set leader
   let mapleader=","
