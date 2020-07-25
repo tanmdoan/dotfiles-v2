@@ -1,4 +1,4 @@
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "javascript,ruby"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
