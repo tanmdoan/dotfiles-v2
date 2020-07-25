@@ -1,35 +1,37 @@
-call plug#begin()
-  Plug 'dracula/vim'
-  Plug 'kien/ctrlp.vim'
-  Plug 'mileszs/ack.vim'
-  Plug 'scrooloose/nerdtree'
-  Plug 'JamshedVesuna/vim-markdown-preview'
-  Plug 'edkolev/tmuxline.vim'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-endwise'
-  Plug 'vim-ruby/vim-ruby'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'christoomey/vim-tmux-runner'
-  Plug 'milkypostman/vim-togglelist'
-  Plug 'scrooloose/nerdtree'
-  Plug 'gabebw/vim-spec-runner'
-  Plug 'mxw/vim-jsx'
-  Plug 'godlygeek/tabular'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
-call plug#end()
+" Plugins
+  call plug#begin()
+    Plug 'dracula/vim'
+    Plug 'kien/ctrlp.vim'
+    Plug 'mileszs/ack.vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'JamshedVesuna/vim-markdown-preview'
+    Plug 'edkolev/tmuxline.vim'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-rails'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-endwise'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'christoomey/vim-tmux-runner'
+    Plug 'milkypostman/vim-togglelist'
+    Plug 'scrooloose/nerdtree'
+    Plug 'gabebw/vim-spec-runner'
+    Plug 'mxw/vim-jsx'
+    Plug 'godlygeek/tabular'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
+  call plug#end()
 
-if (has("termguicolors"))
- set termguicolors
-endif
-syntax enable
-colorscheme dracula
+" Theme
+  if (has("termguicolors"))
+   set termguicolors
+  endif
+  syntax enable
+  colorscheme dracula
 
 " Set leader
   let mapleader=","

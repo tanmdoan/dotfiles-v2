@@ -32,7 +32,7 @@ vim: echo.vim
 	rm -rf ~/.config/nvim/init.vim ;\
 	ln -s $(shell pwd)/.init.vim ~/.config/nvim/init.vim ;\
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim +PlugInstall
+	nvim --headless +PlugInstall +qa
 
 languages: echo.languages
 	bin/languages
