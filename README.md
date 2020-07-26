@@ -26,7 +26,7 @@ Other utility tools include:
 
 ### Make it your own
 
-Place your dotfiles into a `.local` file and the original dotfile will source your
+Place your customizations into a `.local` file and the original dotfile will source your
 custom file.
 
 For example:
@@ -40,6 +40,5 @@ the `Brewfile`
 ### Things to come
 
 - uninstall script
-- improve the PlugInstall step to automatically install/update plugins on nvim open
 
 Inspiration came from ## athal7's dotfiles
