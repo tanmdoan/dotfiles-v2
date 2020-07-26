@@ -6,6 +6,7 @@
     Plug 'scrooloose/nerdtree'
     Plug 'JamshedVesuna/vim-markdown-preview'
     Plug 'edkolev/tmuxline.vim'
+    Plug 'christoomey/vim-tmux-navigator'
     Plug 'ryanoasis/vim-devicons'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-rails'
@@ -13,14 +14,13 @@
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-endwise'
     Plug 'vim-ruby/vim-ruby'
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'christoomey/vim-tmux-runner'
     Plug 'milkypostman/vim-togglelist'
     Plug 'scrooloose/nerdtree'
-    Plug 'gabebw/vim-spec-runner'
-    Plug 'mxw/vim-jsx'
     Plug 'godlygeek/tabular'
+    Plug 'janko/vim-test'
+    Plug 'jgdavey/tslime.vim'
     Plug 'leafgarland/typescript-vim'
+    Plug 'mxw/vim-jsx'
     Plug 'peitalin/vim-jsx-typescript'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
@@ -160,6 +160,14 @@ endfunction
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Automaticaly 
     " close nvim if NERDTree is only thing left open
 
+" Tests/specs
+  let test#strategy = "tslime"    "send vim-test to tmux using tslime
+  let test#ruby#rspec#executable = 'bundle exec spring rspec'
+  nnoremap <silent> <Leader>t :TestNearest<CR>
+  nnoremap <silent> <Leader>T :TestFile<CR>
+  nnoremap <silent> <Leader>ts :TestSuite<CR>
+  nnoremap <silent> <Leader>tl :TestLast<CR>
+
 " Markdown preview
   let vim_markdown_preview_toggle=1
   let vim_markdown_preview_hotkey='<C-m>'
@@ -175,17 +183,6 @@ endfunction
 " toggle quickfix with <Leader> c
   let g:toggle_list_no_mappings=1
   nmap <script> <silent> <Leader>c :call ToggleQuickfixList()<CR>
-
-" Run specs quickly with tmux
-  let g:VtrClearSequence = "^C^Mclear^M"
-  nmap <leader>h :VtrOpenRunner({'orientation': 'h', 'percentage': 33})<CR>
-  nmap <leader>v :VtrOpenRunner({'orientation': 'v', 'percentage': 20})<CR>
-  nmap <leader>k :VtrKillRunner<CR>
-  let g:spec_runner_dispatcher = 'call VtrSendCommand("bundle exec {command}")'
-  let g:disable_write_on_spec_run = 1
-  map <leader>t <plug>RunCurrentSpecFile
-  map <leader>T <plug>RunFocusedSpec
-  map <leader>tl <plug>RunMostRecentSpec
 
 " use <tab> for trigger completion and navigate to the next complete item
   function! s:check_back_space() abort
