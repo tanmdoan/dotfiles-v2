@@ -162,7 +162,7 @@ endfunction
 
 " Tests/specs
   let test#strategy = "tslime"    "send vim-test to tmux using tslime
-  let test#ruby#rspec#executable = 'bundle exec spring rspec'
+  let test#ruby#use_spring_binstub = 1
   nnoremap <silent> <Leader>t :TestNearest<CR>
   nnoremap <silent> <Leader>T :TestFile<CR>
   nnoremap <silent> <Leader>ts :TestSuite<CR>
