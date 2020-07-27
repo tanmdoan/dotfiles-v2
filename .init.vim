@@ -2,7 +2,7 @@
   call plug#begin()
     Plug 'dracula/vim'
     Plug 'kien/ctrlp.vim'
-    Plug 'mileszs/ack.vim'
+    Plug 'jremmen/vim-ripgrep'
     Plug 'scrooloose/nerdtree'
     Plug 'JamshedVesuna/vim-markdown-preview'
     Plug 'edkolev/tmuxline.vim'
@@ -146,15 +146,15 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
-" Ack
+" ripgrep
 " " Use ripgrep for searching ⚡️
 " Options include:
 " --vimgrep -> Needed to parse the rg response properly for ack.vim
 " --type-not sql -> Avoid huge sql file dumps as it slows down the search
 " --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
-  let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
-  nnoremap <leader><bs> :Ack! '\b<c-r><c-w>\b'<cr>
-  nnoremap <leader>a :Ack<space>
+  let g:rgcommand = 'rg --vimgrep --type-not sql --smart-case'
+  nnoremap <leader><bs> :Rg '\b<c-r><c-w>\b'<cr>
+  nnoremap <leader>a :Rg<space>
 
 " NERDTree configuration
   let NERDTreeIgnore=['\~$', 'tmp', '\.git', '\.bundle', '.DS_Store', 'tags', '.swp']
