@@ -147,6 +147,12 @@ function! QuickfixFilenames()
 endfunction
 
 " Ack
+" " Use ripgrep for searching ⚡️
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+  let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
   nnoremap <leader><bs> :Ack! '\b<c-r><c-w>\b'<cr>
   nnoremap <leader>a :Ack<space>
 

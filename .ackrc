@@ -1,3 +1,25 @@
 --ignore-dir=.git/
 --ignore-dir=node_modules/
---ignore-dir=_build/
+--ignore-dir=site-packages/
+--ignore-dir=deps/
+--ignore-dir=__pycache__/
+--ignore-dir=log/
+--ignore-dir=coverage/
+--ignore-dir=__snapshots__/
+--ignore-dir=repos/
+--ignore-dir=rendered/
+--ignore-dir=site/
+--ignore-dir=features/cassettes
+--ignore-dir=vendor/gems
+--ignore-dir=vendor/ruby
+--ignore-dir=tmp/cache
+--ignore-dir=spec/cassettes
+--ignore-file=match:.csv
+--ignore-file=match:.o
+--ignore-file=match:.obj
+--ignore-file=match:.rbc
+--ignore-file=match:.git
+--ignore-file=match:.svn
+
+--pager
+less -r
