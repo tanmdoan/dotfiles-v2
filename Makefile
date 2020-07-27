@@ -1,7 +1,6 @@
 .DEFAULT_GOAL := install
 
-dotfiles = .ackrc \
-				.asdfrc \
+dotfiles = .asdfrc \
 				.fzf.zsh \
 				.gitconfig \
 				.tmux.conf \
