@@ -3,7 +3,6 @@ tap "github/gh"
 tap "burntsushi/ripgrep", "https://github.com/BurntSushi/ripgrep.git"
 cask_args appdir: "/Applications"
 
-# brew "postgresql"
 brew "ack"
 brew "asdf"
 brew "autojump"
@@ -17,6 +16,7 @@ brew "fzf"
 brew "gh"
 brew "git"
 brew "gpg"
+brew "mas"
 brew "navi"
 brew "neovim"
 brew "openssl"
@@ -30,6 +30,11 @@ brew "zsh-completions"
 cask "1password-cli"
 cask "github"
 
-# mas "1Password 7", id: 1333542190
+
+# First time running, uncomment these tools
+
+# brew "postgresql"
+# cask "iterm2"
 # mas "Slack", id: 803453959
+# mas "1Password 7", id: 1333542190
 # mas "Xcode", id: 497799835
