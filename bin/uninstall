@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -e
+
+source $(dirname $0)/dot_functions.sh
+
+directory_warning
+
+for dotfile in $(./bin/file_list.sh); do
+  dotfile_path="$PWD/$dotfile"
+  path="$HOME/$dotfile"
+
+  if [ -L $path ]; then # Symlink?
+    if [ $dotfile_path = "$(readlink $path)" ]; then # Symlinked here?
+      remove_notice $dotfile "exists"
+      unlink $path
+    else
+      skip_notice $dotfile "external"
+    fi
+  else
+    skip_notice $dotfile "unlinked"
+  fi
+done
+
+nvim_path="$HOME/.config/nvim/init.vim"
+
+if [[ $nvim_path ]]; then
+  remove_notice ".init.vim" "exists"
+  unlink $nvim_path
+fi
