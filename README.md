@@ -39,6 +39,4 @@ the `Brewfile`
 
 ### Things to come
 
-- uninstall script
-
 Inspiration came from ## athal7's dotfiles
