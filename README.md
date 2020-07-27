@@ -45,6 +45,7 @@ the `Brewfile`
 
 - automatically set iterm font to hacknerd font
 - installing oh-my-zsh should not stall the make step
+- automate Karabiner installation/settings to map caps-lock to ctrl/esc
 
 ### Trouble shooting
 
