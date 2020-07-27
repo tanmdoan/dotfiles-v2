@@ -43,4 +43,12 @@ the `Brewfile`
 
 ### Future improvements
 
+- automatically set iterm font to hacknerd font
+- installing oh-my-zsh should not stall the make step
+
+### Trouble shooting
+
+If you don't have `oh-my-zsh` installed, you will have to run `make` again \
+after it installs in shell make step. 
+
 Inspiration came from ## athal7's dotfiles
