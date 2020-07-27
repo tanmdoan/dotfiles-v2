@@ -19,7 +19,7 @@ Other utility tools include:
 - [autojump](https://github.com/wting/autojump) -- easily jump to directories
 - [fzf](https://github.com/junegunn/fzf) -- fuzzy finder for the terminal
 
-### To Install
+### Installation
 
 - clone the repo anywhere in your system
 - run `make`
@@ -37,6 +37,10 @@ For example:
 The entry point is the `Makefile` and custom tools can be included via homebrew in
 the `Brewfile`
 
-### Things to come
+### Uninstall
+
+- run `bin/uninstall`
+
+### Future improvements
 
 Inspiration came from ## athal7's dotfiles
