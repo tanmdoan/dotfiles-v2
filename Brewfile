@@ -1,6 +1,7 @@
 tap "homebrew/cask"
 tap "github/gh"
 tap "burntsushi/ripgrep", "https://github.com/BurntSushi/ripgrep.git"
+tap "homebrew/cask-fonts"
 cask_args appdir: "/Applications"
 
 brew "ack"
@@ -28,8 +29,8 @@ brew "zsh"
 brew "zsh-completions"
 
 cask "1password-cli"
+cask "font-hack-nerd-font"
 cask "github"
-
 
 # First time running, uncomment these tools
 
