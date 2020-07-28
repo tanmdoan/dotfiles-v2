@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if ! [[ -d $HOME/.oh-my-zsh ]]; then
-  sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if ! [[ -d $HOME/.oh-my-zsh ]]; then 
+  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 fi
   
 if [[ $SHELL != '/bin/zsh' ]]; then

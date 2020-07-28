@@ -4,6 +4,7 @@
   HYPHEN_INSENSITIVE=true
   COMPLETION_WAITING_DOTS=true
   ZSH_THEME="random"
+  ZSH_DISABLE_COMPFIX=true
 
 # plugins
   plugins=(autojump osx tmux)
