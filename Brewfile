@@ -31,6 +31,7 @@ brew "zsh-completions"
 cask "1password-cli"
 cask "font-hack-nerd-font"
 cask "github"
+cask "karabiner-elements"
 
 # First time running, uncomment these tools
 
