@@ -30,7 +30,7 @@ vim: echo.vim
 	mkdir -p ~/.config/nvim ;\
 	rm -rf ~/.config/nvim/init.vim ;\
 	ln -s $(shell pwd)/.init.vim ~/.config/nvim/init.vim ;\
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 	nvim --headless +PlugInstall +qa
 
 languages: echo.languages
@@ -39,6 +39,6 @@ languages: echo.languages
 other: echo.other
 	defaults write com.apple.screencapture location ~/Downloads;killall SystemUIServer ;\
   defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder ;\
-	pip3 install --user pynvim
+	pip3 install --user pynvim;\
 	rm -rf ~/.config/karabiner/karabiner.json ;\
 	ln -s $(shell pwd)/karabiner.json ~/.config/karabiner/karabiner.json 
