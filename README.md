@@ -43,6 +43,7 @@ the `Brewfile`
 
 ### Future improvements
 
+- use FZF.vim + ripgrep over Ctrl.p and ag
 - automatically set iterm font to hacknerd font
 
 ### Trouble shooting
