@@ -39,6 +39,6 @@ languages: echo.languages
 other: echo.other
 	defaults write com.apple.screencapture location ~/Downloads;killall SystemUIServer ;\
   defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder ;\
-	pip3 install --user pynvim;\
+	python3 -m pip install --user --upgrade pynvim;\
 	rm -rf ~/.config/karabiner/karabiner.json ;\
 	ln -s $(shell pwd)/karabiner.json ~/.config/karabiner/karabiner.json 

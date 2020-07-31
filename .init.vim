@@ -1,3 +1,7 @@
+" Dependencies
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '/usr/bin/python3'
+
 " Plugins
   call plug#begin()
     Plug 'dracula/vim'
@@ -23,7 +27,7 @@
     Plug 'mxw/vim-jsx'
     Plug 'peitalin/vim-jsx-typescript'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
+    let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
   call plug#end()
 
 " Theme
@@ -191,15 +195,18 @@ endfunction
   nmap <script> <silent> <Leader>c :call ToggleQuickfixList()<CR>
 
 " use <tab> for trigger completion and navigate to the next complete item
-  function! s:check_back_space() abort
+  inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+    function! s:check_back_space() abort
     let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
+    return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
 
-  inoremap <silent><expr> <Tab>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<Tab>" :
-        \ coc#refresh()
+  let g:coc_snippet_next = '<tab>'
 
 " use <C-j/k> to nav completion list
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
