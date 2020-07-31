@@ -94,7 +94,10 @@
   export CC=gcc
   alias be='bundle exec'
 
-  # import local zsh customizations, if present
-zrcl="$HOME/.zshrc.local"
-[[ ! -a $zrcl ]] || source $zrcl
+# import local zsh customizations, if present
+  zrcl="$HOME/.zshrc.local"
+  [[ ! -a $zrcl ]] || source $zrcl
+
+# secrets
+  source ~/.secrets
 
