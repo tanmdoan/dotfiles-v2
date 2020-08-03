@@ -48,7 +48,4 @@ the `Brewfile`
 
 ### Trouble shooting
 
-If you don't have `oh-my-zsh` installed, you will have to run `make` again \
-after it installs in shell make step. 
-
 Inspiration came from ## athal7's dotfiles
