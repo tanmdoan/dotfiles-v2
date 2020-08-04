@@ -12,6 +12,7 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'edkolev/tmuxline.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'rondale-sc/vim-spacejam'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-rails'
     Plug 'tpope/vim-surround'
@@ -27,7 +28,16 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'mxw/vim-jsx'
     Plug 'peitalin/vim-jsx-typescript'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
+    let g:coc_global_extensions = [
+      'coc-emmet',
+      'coc-css',
+      'coc-eslint',
+      'coc-html',
+      'coc-json',
+      'coc-prettier',
+      'coc-tsserver',
+      'coc-snippets'
+    ]
   call plug#end()
 
 " Theme
