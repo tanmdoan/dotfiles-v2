@@ -36,7 +36,8 @@ let g:python3_host_prog = '/usr/bin/python3'
       'coc-json',
       'coc-prettier',
       'coc-tsserver',
-      'coc-snippets'
+      'coc-snippets',
+      'coc-solargraph'
     ]
   call plug#end()
 
