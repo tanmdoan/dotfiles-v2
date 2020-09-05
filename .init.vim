@@ -27,6 +27,7 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'leafgarland/typescript-vim'
     Plug 'mxw/vim-jsx'
     Plug 'peitalin/vim-jsx-typescript'
+    Plug 'nathanaelkane/vim-indent-guides'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
       'coc-emmet',
@@ -93,6 +94,9 @@ set noswapfile     	 	           " no swap file
 " remember last position in file
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
+" assist autoread by exectuing :checktime on focus
+  au FocusGained * :checktime
+
 " mapping the jumping between splits. Hold control while using vim nav.
   nmap <C-J> <C-W>j
   nmap <C-K> <C-W>k
@@ -122,6 +126,15 @@ set noswapfile     	 	           " no swap file
 
 " Unhighlight search results
   map <Leader><space> :nohl<cr>
+
+" solargraph
+  " GoTo code navgiation
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+
 
 " ctrlp
  if get(g:, 'loaded_ctrlp', 1)
@@ -178,8 +191,11 @@ endfunction
   let g:NERDTreeNodeDelimiter = "\u00a0"
   map <Leader>n :NERDTreeToggle<CR>
   map <Leader>fnt :NERDTreeFind<CR>
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Automaticaly 
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Automaticaly
     " close nvim if NERDTree is only thing left open
+    "
+" NERDTree configuration
+  map <Leader>i :IndentGuidesToggle<CR>
 
 " Tests/specs
   let test#strategy = "tslime"    "send vim-test to tmux using tslime

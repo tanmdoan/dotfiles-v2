@@ -19,6 +19,14 @@
   export EDITOR="nvim"
   [[ $TMUX != "" ]] && export TERM="screen-256color"
 
+# homebrew completions
+  if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # shell aliases
   alias cat='bat'
   alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
