@@ -1,0 +1,97 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+
+# React
+snippet rfc "creates a react func component" b
+const ${1} = () => {
+	return (
+	)
+}
+
+export default ${1}
+endsnippet
+
+# jest tests
+snippet jd "creates a describe block" b
+describe('${1:Name of the group }', () => {
+	$0
+})
+endsnippet
+
+snippet jbe "before each block for testing" b
+beforeEach(() => {
+	$0
+})
+endsnippet
+
+snippet jae "after each block for testing" b
+afterEach(() => {
+	$0
+})
+endsnippet
+
+snippet jt "creates a test block with arrow func" b
+test('${1:should }', () => {
+	$0
+})
+endsnippet
+
+snippet jta "creates a test block with async callback func" b
+test('${1:should }', async () => {
+	$0
+})
+endsnippet
+
+snippet ush "useState hook" b
+const [${1}, set${1/(.*)/${1:/capitalize}/}] = useState($2)$0
+endsnippet
+snippet ueh "useEffect hook" b
+useEffect(() => {
+  ${1}
+}, [$2])
+endsnippet
+snippet nf "named function" b
+function ${1}(${2}) {
+  ${3}
+}
+endsnippet
+snippet naf "named arrow function" b
+${1} (${2}) => {
+  ${3}
+}
+endsnippet
+snippet af "arrow function" b
+(${1}) => ${2}
+endsnippet
+snippet nf "normal (annoymous) function" b
+function(${2}) {
+  ${3}
+}
+endsnippet
+	
+
+

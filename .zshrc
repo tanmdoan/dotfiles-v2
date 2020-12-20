@@ -63,6 +63,9 @@ fi
   alias gco='git checkout'
   alias reset-authors='git commit --amend --reset-author -C HEAD'
 
+# docker
+  alias dc='docker-compose'
+
 
 # shell functions
   function move-last-download {

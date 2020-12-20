@@ -12,7 +12,7 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'edkolev/tmuxline.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'rondale-sc/vim-spacejam'
+    Plug 'ntpeters/vim-better-whitespace'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-rails'
     Plug 'tpope/vim-surround'
@@ -22,10 +22,13 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'milkypostman/vim-togglelist'
     Plug 'scrooloose/nerdtree'
     Plug 'godlygeek/tabular'
+    Plug 'AndrewRadev/splitjoin.vim'
     Plug 'janko/vim-test'
     Plug 'jgdavey/tslime.vim'
     Plug 'leafgarland/typescript-vim'
-    Plug 'mxw/vim-jsx'
+    Plug 'rstacruz/vim-closer'
+    Plug 'yuezk/vim-js'
+    Plug 'maxmellon/vim-jsx-pretty'
     Plug 'peitalin/vim-jsx-typescript'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -76,6 +79,13 @@ set number                       " line numbers
 set nobackup 	 		               " no backups
 set nowritebackup 	 	           " no backups
 set noswapfile     	 	           " no swap file
+set path=.,src
+set suffixesadd=.js,.jsx
+
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+let g:html_indent_inctags = "script"
+filetype plugin indent on
 
 " match tabs/spaces
   set smarttab
@@ -128,13 +138,24 @@ set noswapfile     	 	           " no swap file
   map <Leader><space> :nohl<cr>
 
 " solargraph
-  " GoTo code navgiation
+" GoTo code navgiation
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
 
+" better-whitespace
+" strips whitespace on save
+  let g:better_whitespace_enabled=0
+  let g:strip_whitespace_on_save=1
+  let g:strip_whitespace_confirm=0
+  let g:strip_only_modified_lines=1
 
+" auto closing tag
+  let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
+  let g:closetag_xhtml_filetypes = 'xhtml,javascript.jsx,jsx'
+  autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 
 " ctrlp
  if get(g:, 'loaded_ctrlp', 1)
@@ -204,6 +225,20 @@ endfunction
   nnoremap <silent> <Leader>T :TestFile<CR>
   nnoremap <silent> <Leader>ts :TestSuite<CR>
   nnoremap <silent> <Leader>tl :TestLast<CR>
+
+" Teach vim-rails about request specs
+  let g:rails_projections = {
+        \ "app/controllers/*_controller.rb": {
+        \   "test": [
+        \     "spec/controllers/{}_controller_spec.rb",
+        \     "spec/requests/{}_request_spec.rb"
+        \   ],
+        \ },
+        \ "spec/requests/*_request_spec.rb": {
+        \   "alternate": [
+        \     "app/controllers/{}_controller.rb",
+        \   ],
+        \ }}
 
 " Markdown preview
   let vim_markdown_preview_toggle=1
