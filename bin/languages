@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+	asdf update
+
 	if ! [[ -d ~/.asdf/plugins/ruby ]]; then
 		asdf plugin add ruby
 	fi
@@ -9,4 +11,4 @@
 	fi
 
 	~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-	asdf install 
+	asdf install
