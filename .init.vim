@@ -8,7 +8,7 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'kien/ctrlp.vim'
     Plug 'jremmen/vim-ripgrep'
     Plug 'scrooloose/nerdtree'
-    Plug 'JamshedVesuna/vim-markdown-preview'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
     Plug 'edkolev/tmuxline.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'ryanoasis/vim-devicons'
@@ -27,6 +27,7 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'jgdavey/tslime.vim'
     Plug 'leafgarland/typescript-vim'
     Plug 'rstacruz/vim-closer'
+    Plug 'alvan/vim-closetag'
     Plug 'yuezk/vim-js'
     Plug 'maxmellon/vim-jsx-pretty'
     Plug 'peitalin/vim-jsx-typescript'
@@ -152,7 +153,7 @@ filetype plugin indent on
   let g:strip_only_modified_lines=1
 
 " auto closing tag
-  let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
+  let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.js"
   let g:closetag_xhtml_filetypes = 'xhtml,javascript.jsx,jsx'
   autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
@@ -241,9 +242,7 @@ endfunction
         \ }}
 
 " Markdown preview
-  let vim_markdown_preview_toggle=1
-  let vim_markdown_preview_hotkey='<C-m>'
-  let vim_markdown_preview_github=1
+  nmap <C-m> <Plug>MarkdownPreview
 
 " Tmux status bar
   let g:tmuxline_preset = {
@@ -274,6 +273,9 @@ endfunction
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" coc-prettier format command
+  command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+  nmap <script> <silent> <Leader>f :call CocAction('runCommand', 'prettier.formatFile')<CR>
 
 if filereadable(expand('~/.init.vim.local'))
   source ~/.init.vim.local

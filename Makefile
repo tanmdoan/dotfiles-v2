@@ -30,6 +30,7 @@ vim: echo.vim
 	mkdir -p ~/.config/nvim ;\
 	rm -rf ~/.config/nvim/init.vim ;\
 	ln -s $(shell pwd)/.init.vim ~/.config/nvim/init.vim ;\
+	ln -s $(shell pwd)/javascript.snippets ~/.config/coc/ultisnips/javascript.snippets ;\
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 	nvim --headless +PlugInstall +qa
 
@@ -42,3 +43,4 @@ other: echo.other
 	python3 -m pip install --user --upgrade pynvim;\
 	rm -rf ~/.config/karabiner/karabiner.json ;\
 	ln -s $(shell pwd)/karabiner.json ~/.config/karabiner/karabiner.json 
+	ln -s $(shell pwd)/starship.toml ~/.config/starship.toml

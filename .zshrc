@@ -3,7 +3,6 @@
   export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
   HYPHEN_INSENSITIVE=true
   COMPLETION_WAITING_DOTS=true
-  ZSH_THEME="random"
   ZSH_DISABLE_COMPFIX=true
 
 # plugins
@@ -38,6 +37,7 @@ fi
   alias g='git'
   alias mkcd='mkdir $1 && cd $1'
   alias vi=nvim
+  alias v='nvim .'
 
 # git aliases
   alias gap='git add -p'
@@ -66,6 +66,10 @@ fi
 # docker
   alias dc='docker-compose'
 
+# aws
+  alias aws-dev='aws-vault exec dev-tan --duration=8h'
+  alias aws-prod='aws-vault exec prod --duration=8h'
+  alias aws-login='aws-vault login prod'
 
 # shell functions
   function move-last-download {
@@ -111,4 +115,7 @@ fi
 
 # secrets
   source ~/.secrets
+
+# starship
+eval "$(starship init zsh)"
 
