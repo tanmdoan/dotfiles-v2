@@ -26,7 +26,6 @@ fi
   [[ $TMUX != "" ]] && export TERM="screen-256color"
 
 # shell aliases
-  alias cat='bat'
   alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
   alias e=$EDITOR
   alias help='navi'
