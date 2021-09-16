@@ -4,41 +4,37 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " Plugins
   call plug#begin()
-    Plug 'dracula/vim'
-    Plug 'kien/ctrlp.vim'
-    Plug 'jremmen/vim-ripgrep'
-    Plug 'scrooloose/nerdtree'
-    Plug 'JamshedVesuna/vim-markdown-preview'
-    Plug 'edkolev/tmuxline.vim'
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'rondale-sc/vim-spacejam'
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-rails'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-endwise'
-    Plug 'vim-ruby/vim-ruby'
-    Plug 'milkypostman/vim-togglelist'
-    Plug 'scrooloose/nerdtree'
-    Plug 'godlygeek/tabular'
-    Plug 'janko/vim-test'
-    Plug 'jgdavey/tslime.vim'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'mxw/vim-jsx'
-    Plug 'peitalin/vim-jsx-typescript'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = [
-      'coc-emmet',
-      'coc-css',
-      'coc-eslint',
-      'coc-html',
-      'coc-json',
-      'coc-prettier',
-      'coc-tsserver',
-      'coc-snippets',
-      'coc-solargraph'
-    ]
+    Plug 'dracula/vim' "Colorscheme
+    Plug 'kien/ctrlp.vim' "fuzzy file finder
+    Plug 'jremmen/vim-ripgrep' "Search with RipGrep
+    Plug 'JamshedVesuna/vim-markdown-preview' "Markdown Preview
+    Plug 'edkolev/tmuxline.vim' "idk -
+    Plug 'vim-airline/vim-airline' "useful information like powerline
+    Plug 'christoomey/vim-tmux-navigator' "navigate vim splits and tmux panes with ease
+    Plug 'ryanoasis/vim-devicons' "filetype glyphs
+    Plug 'rondale-sc/vim-spacejam' "remove trailing whitespace
+    Plug 'tpope/vim-commentary' "comment stuff out
+    Plug 'tpope/vim-rails' "rails tools
+    Plug 'tpope/vim-surround' "quoting/parenthesizing
+    Plug 'tpope/vim-fugitive' "git tooling
+    Plug 'tpope/vim-rhubarb' "git browse
+    Plug 'tpope/vim-endwise' "wisely add `end`
+    Plug 'vim-ruby/vim-ruby' "ruby tooling
+    Plug 'scrooloose/nerdtree' "File Tree
+    Plug 'tpope/vim-unimpaired' "set paste, etc.
+    Plug 'vim-syntastic/syntastic' "Syntax checking
+    Plug 'neoclide/coc.nvim', {'branch': 'release'} "Conquorer of Completion
+  let g:coc_global_extensions = [
+    'coc-emmet',
+    'coc-css',
+    'coc-eslint',
+    'coc-html',
+    'coc-json',
+    'coc-prettier',
+    'coc-tsserver',
+    'coc-snippets',
+    'coc-solargraph'
+  ]
   call plug#end()
 
 " Theme
@@ -75,6 +71,7 @@ set number                       " line numbers
 set nobackup 	 		               " no backups
 set nowritebackup 	 	           " no backups
 set noswapfile     	 	           " no swap file
+set colorcolumn=80               " set a column at 80 chars
 
 " match tabs/spaces
   set smarttab
@@ -178,21 +175,20 @@ endfunction
   let g:NERDTreeNodeDelimiter = "\u00a0"
   map <Leader>n :NERDTreeToggle<CR>
   map <Leader>fnt :NERDTreeFind<CR>
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Automaticaly 
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Automaticaly
     " close nvim if NERDTree is only thing left open
-
-" Tests/specs
-  let test#strategy = "tslime"    "send vim-test to tmux using tslime
-  let test#ruby#use_spring_binstub = 1
-  nnoremap <silent> <Leader>t :TestNearest<CR>
-  nnoremap <silent> <Leader>T :TestFile<CR>
-  nnoremap <silent> <Leader>ts :TestSuite<CR>
-  nnoremap <silent> <Leader>tl :TestLast<CR>
 
 " Markdown preview
   let vim_markdown_preview_toggle=1
   let vim_markdown_preview_hotkey='<C-m>'
   let vim_markdown_preview_github=1
+
+" Make Syntastic work for yml as well as yaml
+autocmd BufRead,BufNewFile *.yml set filetype=yaml
+autocmd FileType yml setlocal commentstring=#
+
+" Spell check my git commits so I don't look wuite as bad
+autocmd FileType gitcommit setlocal spell
 
 " Tmux status bar
   let g:tmuxline_preset = {
@@ -227,3 +223,31 @@ endfunction
 if filereadable(expand('~/.init.vim.local'))
   source ~/.init.vim.local
 endif
+
+" leader + vv splits pane and opens Ctrl P
+map <Leader>vv :vsp<cr><C-p>
+map <Leader> <esc>
+map <Leader>ss :sp<cr><C-p>
+map <Leader> <esc>
+
+" abreeevs
+inoreabbrev bpry require 'pry'; binding.pry
+
+" format JSON with python
+nnoremap <Leader>j :%!python -m json.tool<cr>
+
+" Use powerline fonts with airline
+let g:airline_powerline_fonts = 1
+
+" Gross hack to hopefully make it obvious when I forget to write a buffer
+function! AirlineInit()
+  " first define a new part for modified
+  call airline#parts#define('modified', {
+    \ 'raw': '%m',
+    \ 'accent': 'red',
+    \ })
+
+  " then override the default layout for section c with your new part
+  let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
+endfunction
+autocmd VimEnter * call AirlineInit()
