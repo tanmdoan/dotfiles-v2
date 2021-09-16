@@ -27,7 +27,7 @@
 	ui = auto
 [core]
 	excludesfile = ~/.cvsignore
-	editor = vim
+	editor = nvim
 	whitespace = warn
 [help]
 	autocorrect = 10
@@ -51,6 +51,8 @@
 	path = ~/.gitconfig.local
 [fetch]
 	prune = true
+[commit]
+  verbose = true
 [user]
 	name = Andy Mention
 	email =  amention@gmail.com
