@@ -4,6 +4,7 @@ dotfiles = .asdfrc \
 				.fzf.zsh \
 				.gitconfig \
 				.tmux.conf \
+				.tmate.conf \
 				.tool-versions \
 				.zshrc
 

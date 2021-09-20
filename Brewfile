@@ -25,6 +25,7 @@ brew "reattach-to-user-namespace"
 brew "redis"
 brew "tmux"
 brew "yarn"
+brew "tmate"
 brew "zsh"
 brew "zsh-completions"
 
