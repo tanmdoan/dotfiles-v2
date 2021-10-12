@@ -42,7 +42,7 @@
 	name = bundle
 	driver = bundle
 [push]
-	default = tracking
+	default = current
 [rebase]
 	autosquash = true
 [diff]
