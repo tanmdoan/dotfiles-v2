@@ -24,6 +24,7 @@ let g:python3_host_prog = '/usr/bin/python3'
     Plug 'tpope/vim-unimpaired' "set paste, etc.
     Plug 'vim-syntastic/syntastic' "Syntax checking
     Plug 'neoclide/coc.nvim', {'branch': 'release'} "Conquorer of Completion
+    Plug 'iberianpig/tig-explorer.vim' "tig exploter
   let g:coc_global_extensions = [
     'coc-emmet',
     'coc-css',
@@ -250,4 +251,27 @@ function! AirlineInit()
   " then override the default layout for section c with your new part
   let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
 endfunction
+
+" TigExplorer Stuff
+" open tig with current file
+nnoremap <Leader>T :TigOpenCurrentFile<CR>
+
+" open tig with Project root path
+nnoremap <Leader>t :TigOpenProjectRootDir<CR>
+
+" open tig grep
+nnoremap <Leader>g :TigGrep<CR>
+
+" resume from last grep
+nnoremap <Leader>r :TigGrepResume<CR>
+
+" open tig grep with the selected word
+vnoremap <Leader>g y:TigGrep<Space><C-R>"<CR>
+
+" open tig grep with the word under the cursor
+nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
+
+" open tig blame with current file
+nnoremap <Leader>b :TigBlame<CR>
+
 autocmd VimEnter * call AirlineInit()
