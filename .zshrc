@@ -13,7 +13,7 @@ fi
   ZSH_DISABLE_COMPFIX=true
 
 # plugins
-  plugins=(autojump osx tmux)
+  plugins=(autojump macos tmux)
   if [[ -f $ZSH/oh-my-zsh.sh ]]; then
     source $ZSH/oh-my-zsh.sh
   fi
