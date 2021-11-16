@@ -58,6 +58,7 @@ fi
   alias grc='git rebase --continue'
   alias gra='git rebase --abort'
   alias gco='git checkout'
+  alias gsm='git switch main && git pull --rebase'
   alias reset-authors='git commit --amend --reset-author -C HEAD'
 
 
