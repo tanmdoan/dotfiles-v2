@@ -28,6 +28,8 @@ brew "yarn"
 brew "tmate"
 brew "zsh"
 brew "zsh-completions"
+brew "tree"
+brew "tig"
 
 cask "1password-cli"
 cask "font-hack-nerd-font"
