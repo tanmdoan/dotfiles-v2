@@ -190,6 +190,7 @@ autocmd FileType yml setlocal commentstring=#
 
 " Spell check my git commits so I don't look wuite as bad
 autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
 
 " Tmux status bar
   let g:tmuxline_preset = {
