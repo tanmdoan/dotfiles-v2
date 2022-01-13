@@ -91,6 +91,11 @@ fi
      mkdir -p "$1" && cd "$1"
   }
 
+  # source env var file
+  function cashcat {
+    env $(cat "$1") "$2"
+  }
+
 # version management
   source /usr/local/opt/asdf/asdf.sh
   export PATH="$HOME/.asdf/shims:$PATH"
