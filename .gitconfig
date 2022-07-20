@@ -23,6 +23,10 @@
   snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
   recommit = commit --amend --no-edit
   yolo = push --force
+  rebase-main = !git switch main && git pull --rebase && git switch - && git rebase origin/main
+  rbm = !git switch main && git pull --rebase && git switch - && git rebase origin/main
+  rebase-develop = !git switch develop && git pull --rebase && git switch - && git rebase origin/develop
+  rbd = !git switch develop && git pull --rebase && git switch - && git rebase origin/develop
 [branch]
 	autosetuprebase = always
 [color]
